@@ -9,14 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppTitlesAnime {
-	public partial class FormListTypes : Form {
-		public FormListTypes() {
+	public partial class FormAddType : Form {
+		public FormAddType() {
 			InitializeComponent();
-		}
-
-		private void BtnAddType_Click(object sender, EventArgs e) {
-			FormAddType formAddType = new FormAddType();
-			formAddType.ShowDialog();
 		}
 	}
 }
