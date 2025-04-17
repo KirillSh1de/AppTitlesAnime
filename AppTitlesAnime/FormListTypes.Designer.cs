@@ -46,7 +46,7 @@
 			flowLayoutPanelTop.Location = new Point(0, 0);
 			flowLayoutPanelTop.Name = "flowLayoutPanelTop";
 			flowLayoutPanelTop.Padding = new Padding(10);
-			flowLayoutPanelTop.Size = new Size(799, 61);
+			flowLayoutPanelTop.Size = new Size(934, 61);
 			flowLayoutPanelTop.TabIndex = 0;
 			// 
 			// btnAddType
@@ -82,12 +82,16 @@
 			// 
 			// dataGridViewTypes
 			// 
+			dataGridViewTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewTypes.BackgroundColor = Color.White;
 			dataGridViewTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridViewTypes.Dock = DockStyle.Fill;
 			dataGridViewTypes.Location = new Point(10, 10);
+			dataGridViewTypes.MultiSelect = false;
 			dataGridViewTypes.Name = "dataGridViewTypes";
-			dataGridViewTypes.Size = new Size(779, 450);
+			dataGridViewTypes.ReadOnly = true;
+			dataGridViewTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dataGridViewTypes.Size = new Size(914, 430);
 			dataGridViewTypes.TabIndex = 1;
 			// 
 			// panelFill
@@ -97,7 +101,7 @@
 			panelFill.Location = new Point(0, 61);
 			panelFill.Name = "panelFill";
 			panelFill.Padding = new Padding(10);
-			panelFill.Size = new Size(799, 470);
+			panelFill.Size = new Size(934, 450);
 			panelFill.TabIndex = 2;
 			// 
 			// FormListTypes
@@ -105,7 +109,7 @@
 			AutoScaleDimensions = new SizeF(11F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
-			ClientSize = new Size(799, 531);
+			ClientSize = new Size(934, 511);
 			Controls.Add(panelFill);
 			Controls.Add(flowLayoutPanelTop);
 			Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
