@@ -23,14 +23,17 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			components = new System.ComponentModel.Container();
 			panelFill = new Panel();
 			textBoxTypeName = new TextBox();
 			labelTypeName = new Label();
 			flowLayoutPanelBottom = new FlowLayoutPanel();
 			btnSaveChanges = new Button();
 			btnCancel = new Button();
+			errorProvider = new ErrorProvider(components);
 			panelFill.SuspendLayout();
 			flowLayoutPanelBottom.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
 			SuspendLayout();
 			// 
 			// panelFill
@@ -40,7 +43,7 @@
 			panelFill.Dock = DockStyle.Fill;
 			panelFill.Location = new Point(0, 0);
 			panelFill.Name = "panelFill";
-			panelFill.Padding = new Padding(10);
+			panelFill.Padding = new Padding(10, 10, 20, 10);
 			panelFill.Size = new Size(434, 146);
 			panelFill.TabIndex = 0;
 			// 
@@ -50,8 +53,10 @@
 			textBoxTypeName.Location = new Point(10, 35);
 			textBoxTypeName.Margin = new Padding(3, 15, 3, 3);
 			textBoxTypeName.Name = "textBoxTypeName";
-			textBoxTypeName.Size = new Size(414, 33);
+			textBoxTypeName.Size = new Size(404, 33);
 			textBoxTypeName.TabIndex = 1;
+			textBoxTypeName.TextChanged += TextBoxTypeName_TextChanged;
+			textBoxTypeName.Validating += TextBoxTypeName_Validating;
 			// 
 			// labelTypeName
 			// 
@@ -71,13 +76,14 @@
 			flowLayoutPanelBottom.Dock = DockStyle.Bottom;
 			flowLayoutPanelBottom.Location = new Point(0, 85);
 			flowLayoutPanelBottom.Name = "flowLayoutPanelBottom";
-			flowLayoutPanelBottom.Padding = new Padding(10);
+			flowLayoutPanelBottom.Padding = new Padding(10, 10, 20, 10);
 			flowLayoutPanelBottom.Size = new Size(434, 61);
 			flowLayoutPanelBottom.TabIndex = 1;
 			// 
 			// btnSaveChanges
 			// 
 			btnSaveChanges.AutoSize = true;
+			btnSaveChanges.DialogResult = DialogResult.OK;
 			btnSaveChanges.Location = new Point(13, 13);
 			btnSaveChanges.Name = "btnSaveChanges";
 			btnSaveChanges.Size = new Size(115, 35);
@@ -88,12 +94,17 @@
 			// btnCancel
 			// 
 			btnCancel.AutoSize = true;
+			btnCancel.DialogResult = DialogResult.Cancel;
 			btnCancel.Location = new Point(134, 13);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(88, 35);
 			btnCancel.TabIndex = 1;
 			btnCancel.Text = "Отмена";
 			btnCancel.UseVisualStyleBackColor = true;
+			// 
+			// errorProvider
+			// 
+			errorProvider.ContainerControl = this;
 			// 
 			// FormAddType
 			// 
@@ -111,6 +122,7 @@
 			panelFill.PerformLayout();
 			flowLayoutPanelBottom.ResumeLayout(false);
 			flowLayoutPanelBottom.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -121,7 +133,8 @@
 		private FlowLayoutPanel flowLayoutPanelBottom;
 		private Button btnSaveChanges;
 		private Button btnCancel;
-		private TextBox textBoxTypeName;
 		private Label labelTypeName;
+		protected internal TextBox textBoxTypeName;
+		private ErrorProvider errorProvider;
 	}
 }
