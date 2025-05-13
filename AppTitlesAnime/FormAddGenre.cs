@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using AppContext = AppTitlesAnime.Models.AppContext;
-using Type = AppTitlesAnime.Models.Type;
+using Genre = AppTitlesAnime.Models.Genre;
 
 namespace AppTitlesAnime {
-	public partial class FormAddType : Form {
+	public partial class FormAddGenre : Form {
 		private AppContext db;
 
-		public FormAddType() {
+		public FormAddGenre() {
 			InitializeComponent();
 		}
 
 		protected override void OnLoad(EventArgs e) {
 			base.OnLoad(e);
 			this.db = new AppContext();
-			this.db.Types.Load();
+			this.db.Genres.Load();
 		}
 
 		protected override void OnClosing(CancelEventArgs e) {
@@ -32,22 +32,12 @@ namespace AppTitlesAnime {
 			this.db = null;
 		}
 
-		private void TextBoxTypeName_Validating(object sender, CancelEventArgs e) {
-			if (String.IsNullOrEmpty(textBoxTypeName.Text)) {
-				errorProvider.SetError(textBoxTypeName, "Поле не может быть пустым");
+		private void TextBoxGenreName_Validating(object sender, CancelEventArgs e) {
+			if (String.IsNullOrEmpty(textBoxGenreName.Text)) {
+				errorProvider.SetError(textBoxGenreName, "Поле не может быть пустым");
 				btnSaveChanges.Enabled = false;
-			} else if (db.Types.Local.Any(t => t.TypeName.Equals(textBoxTypeName.Text, StringComparison.OrdinalIgnoreCase))) {
-				errorProvider.SetError(textBoxTypeName, "Значение уже есть");
-				btnSaveChanges.Enabled = false;
-			}else {
-				errorProvider.Clear();
-				btnSaveChanges.Enabled = true;
-			}
-		}
-
-		private void TextBoxTypeName_TextChanged(object sender, EventArgs e) {
-			if (String.IsNullOrEmpty(textBoxTypeName.Text)) {
-				errorProvider.SetError(textBoxTypeName, "Поле не может быть пустым");
+			} else if (db.Genres.Local.Any(t => t.GenreName.Equals(textBoxGenreName.Text, StringComparison.OrdinalIgnoreCase))) {
+				errorProvider.SetError(textBoxGenreName, "Значение уже есть");
 				btnSaveChanges.Enabled = false;
 			} else {
 				errorProvider.Clear();
@@ -55,8 +45,17 @@ namespace AppTitlesAnime {
 			}
 		}
 
+		private void TextBoxGenreName_TextChanged(object sender, EventArgs e) {
+			if (String.IsNullOrEmpty(textBoxGenreName.Text)) {
+				errorProvider.SetError(textBoxGenreName, "Поле не может быть пустым");
+				btnSaveChanges.Enabled = false;
+			} else {
+				errorProvider.Clear();
+				btnSaveChanges.Enabled = true;
+			}
+		}
 
-		private void FormAddType_Load(object sender, EventArgs e) {
+		private void FormAddGenre_Load(object sender, EventArgs e) {
 
 		}
 	}

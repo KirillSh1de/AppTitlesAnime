@@ -29,6 +29,7 @@
 		private void InitializeComponent() {
 			btnShowTypes = new Button();
 			btnShowGenres = new Button();
+			btnShowStatuses = new Button();
 			SuspendLayout();
 			// 
 			// btnShowTypes
@@ -51,6 +52,18 @@
 			btnShowGenres.TabIndex = 1;
 			btnShowGenres.Text = "Отобразить список \"Жанры\"";
 			btnShowGenres.UseVisualStyleBackColor = true;
+			btnShowGenres.Click += BtnShowGenres_Click;
+			// 
+			// btnShowStatuses
+			// 
+			btnShowStatuses.AutoSize = true;
+			btnShowStatuses.Location = new Point(12, 94);
+			btnShowStatuses.Name = "btnShowStatuses";
+			btnShowStatuses.Size = new Size(269, 35);
+			btnShowStatuses.TabIndex = 2;
+			btnShowStatuses.Text = "Отобразить список \"Статус\"";
+			btnShowStatuses.UseVisualStyleBackColor = true;
+			btnShowStatuses.Click += BtnShowStatuses_Click;
 			// 
 			// FormMain
 			// 
@@ -58,12 +71,14 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
 			ClientSize = new Size(773, 506);
+			Controls.Add(btnShowStatuses);
 			Controls.Add(btnShowGenres);
 			Controls.Add(btnShowTypes);
 			Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
 			Margin = new Padding(5);
 			Name = "FormMain";
 			Text = "Главная Форма";
+			Click += BtnShowStatuses_Click;
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -72,5 +87,6 @@
 
 		private Button btnShowTypes;
 		private Button btnShowGenres;
+		private Button btnShowStatuses;
 	}
 }

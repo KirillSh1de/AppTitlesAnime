@@ -24,7 +24,7 @@ namespace AppTitlesAnime {
 			base.OnLoad(e);
 			this.db = new AppContext();
 			this.db.Types.Load();
-			this.dataGridViewTypes.DataSource = this.db.Types.Local.OrderBy(o => o.TypeName).ToList();
+			this.dataGridViewTypes.DataSource = this.db.Types.ToList().OrderBy(o => o.TypeName).ToList();
 
 			//скрытие столбцов
 			dataGridViewTypes.Columns["Id"].Visible = false;
